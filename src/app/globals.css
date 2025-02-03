@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.curtainContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.cardContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+  pointer-events: none;
+  align-content: center;
+  justify-items: center;
+}
+
+.curtainLeft,
+.curtainRight {
+  position: absolute;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 10;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.curtainLeft {
+  left: 0;
+  animation-name: slideInLeft;
+}
+
+.curtainRight {
+  right: 0;
+  animation-name: slideInRight;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+
+}
+
+.curtainLeft.slideOut {
+  animation-name: slideOutLeft;
+}
+
+.curtainRight.slideOut {
+  animation-name: slideOutRight;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  text-align: center;
+}
+
+.button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fade-in {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-name: fade-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 2px; /* Makes the scrollbar very thin */
+  height: 2px; /* Makes the scrollbar for horizontal scroll thin too */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* No background for the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b6b6b; /* No color for the scrollbar thumb */
+  border-radius: 10px; /* Optional, makes the thumb rounded */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4c4c4d; /* Optional, color when hovering over the thumb */
+}
